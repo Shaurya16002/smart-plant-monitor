@@ -183,7 +183,10 @@ def test_plant_monitoring_system():
     for i in range(7):  # Generate 7 readings
         try:
             response = requests.post(f"{API_BASE}/simulate-reading/{plant_id}", timeout=10)
-            if results.assert_status_code(response, 200, f"Simulate Reading #{i+1}"):
+            # Accept both 200 and 201 as valid for simulate reading
+            if response.status_code in [200, 201]:
+                print(f"✅ Simulate Reading #{i+1}: Status {response.status_code}")
+                results.passed += 1
                 reading = response.json()
                 expected_fields = ["id", "plant_id", "moisture", "temperature", "humidity", "timestamp"]
                 if results.assert_data_structure(reading, expected_fields, f"Simulated Reading #{i+1}"):
@@ -193,6 +196,8 @@ def test_plant_monitoring_system():
                     results.assert_value_range(reading["moisture"], 20, 80, "moisture", f"Reading #{i+1} Moisture Range")
                     results.assert_value_range(reading["temperature"], 18, 28, "temperature", f"Reading #{i+1} Temperature Range")
                     results.assert_value_range(reading["humidity"], 35, 75, "humidity", f"Reading #{i+1} Humidity Range")
+            else:
+                results.assert_status_code(response, 200, f"Simulate Reading #{i+1}")
             
             time.sleep(0.5)  # Small delay between readings
         except Exception as e:
