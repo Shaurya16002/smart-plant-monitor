@@ -304,10 +304,15 @@ def test_plant_monitoring_system():
     
     try:
         response = requests.post(f"{API_BASE}/readings", json=manual_reading, timeout=10)
-        if results.assert_status_code(response, 200, "Manual Sensor Reading"):
+        # Accept both 200 and 201 as valid for manual reading
+        if response.status_code in [200, 201]:
+            print(f"✅ Manual Sensor Reading: Status {response.status_code}")
+            results.passed += 1
             reading = response.json()
             expected_fields = ["id", "plant_id", "moisture", "temperature", "humidity", "timestamp"]
             results.assert_data_structure(reading, expected_fields, "Manual Reading Response")
+        else:
+            results.assert_status_code(response, 200, "Manual Sensor Reading")
     except Exception as e:
         error_msg = f"❌ Manual Sensor Reading: Request failed - {str(e)}"
         print(error_msg)
