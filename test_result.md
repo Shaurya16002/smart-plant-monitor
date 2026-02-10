@@ -107,39 +107,48 @@ user_problem_statement: "Build a Smart Plant Monitoring System mobile app with s
 backend:
   - task: "Plant CRUD APIs"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented POST /api/plants (create), GET /api/plants (list all), GET /api/plants/{id} (get single), PUT /api/plants/{id} (update), DELETE /api/plants/{id} (delete). Each plant has name, type, location, image, and thresholds for monitoring."
+      - working: true
+        agent: "testing"
+        comment: "✅ ALL PLANT CRUD APIs WORKING: POST /api/plants (create plant - returns 200), GET /api/plants (list all plants), GET /api/plants/{id} (get single plant), PUT /api/plants/{id} (update plant), DELETE /api/plants/{id} (delete plant). Data structure validation passed. ObjectId handling working correctly. Minor: Delete returns 400 instead of 404 for non-existent plant, but functionality works."
   
   - task: "Sensor Reading APIs"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented POST /api/readings (add reading), GET /api/readings/{plant_id}/latest (get latest), GET /api/readings/{plant_id}/history (get history with days filter), GET /api/readings/{plant_id}/reports (daily aggregated reports)"
+      - working: true
+        agent: "testing"
+        comment: "✅ ALL SENSOR READING APIs WORKING: POST /api/readings (manual reading creation), GET /api/readings/{plant_id}/latest (latest reading), GET /api/readings/{plant_id}/history?days=7 (reading history with 7 readings returned), GET /api/readings/{plant_id}/reports?days=7 (daily aggregated reports with MongoDB aggregation pipeline working). All data structures valid, timestamps correct."
   
   - task: "Simulate Sensor Data"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented POST /api/simulate-reading/{plant_id} to generate random sensor data for testing without Arduino hardware. Generates realistic moisture (20-80%), temperature (18-28°C), and humidity (35-75%)."
+      - working: true
+        agent: "testing"
+        comment: "✅ SIMULATE SENSOR DATA WORKING: POST /api/simulate-reading/{plant_id} generates realistic sensor data. Tested 7 readings - all values within expected ranges: moisture (20-80%), temperature (18-28°C), humidity (35-75%). Data persistence and retrieval working correctly."
 
 frontend:
   - task: "Main Dashboard Screen"
