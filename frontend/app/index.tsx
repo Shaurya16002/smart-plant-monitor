@@ -101,16 +101,24 @@ export default function Index() {
       
       {/* Header */}
       <View style={styles.header}>
-        <View>
+        <View style={styles.headerLeft}>
           <Text style={styles.headerTitle}>Plant Monitor</Text>
           <Text style={styles.headerSubtitle}>Real-time plant health tracking</Text>
         </View>
-        <TouchableOpacity 
-          style={styles.addButton}
-          onPress={() => router.push('/add-plant')}
-        >
-          <Ionicons name="add" size={28} color="#fff" />
-        </TouchableOpacity>
+        <View style={styles.headerButtons}>
+          <TouchableOpacity 
+            style={styles.setupButton}
+            onPress={() => router.push('/arduino-setup')}
+          >
+            <Ionicons name="hardware-chip-outline" size={22} color="#3b82f6" />
+          </TouchableOpacity>
+          <TouchableOpacity 
+            style={styles.addButton}
+            onPress={() => router.push('/add-plant')}
+          >
+            <Ionicons name="add" size={28} color="#fff" />
+          </TouchableOpacity>
+        </View>
       </View>
 
       <ScrollView 
