@@ -12,6 +12,7 @@ export default function RootLayout() {
       <Stack.Screen name="index" />
       <Stack.Screen name="add-plant" />
       <Stack.Screen name="plant-details" />
+      <Stack.Screen name="arduino-setup" />
     </Stack>
   );
 }
