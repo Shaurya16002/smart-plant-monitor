@@ -261,6 +261,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#334155',
   },
+  headerLeft: {
+    flex: 1,
+  },
   headerTitle: {
     fontSize: 28,
     fontWeight: 'bold',
@@ -270,6 +273,20 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#94a3b8',
     marginTop: 4,
+  },
+  headerButtons: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  setupButton: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: '#1e40af20',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#3b82f6',
   },
   addButton: {
     width: 48,
