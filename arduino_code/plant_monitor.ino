@@ -18,8 +18,8 @@
 #include <ArduinoJson.h>
 
 // WiFi Credentials
-const char* ssid = "YOUR_WIFI_SSID";           // Replace with your WiFi name
-const char* password = "YOUR_WIFI_PASSWORD";   // Replace with your WiFi password
+const char* ssid = "plant_monitoring";         // Your WiFi network name
+const char* password = "hardware_software";    // Your WiFi password
 
 // API Configuration
 const char* serverUrl = "https://plant-guardian-21.preview.emergentagent.com/api/readings";
