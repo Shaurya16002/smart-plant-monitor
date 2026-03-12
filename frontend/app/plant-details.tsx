@@ -145,6 +145,26 @@ export default function PlantDetails() {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="#10b981" />
         }
       >
+        {/* Plant ID Card for Arduino */}
+        <View style={styles.card}>
+          <View style={styles.cardHeader}>
+            <Ionicons name="code-outline" size={24} color="#3b82f6" />
+            <Text style={styles.cardTitle}>Arduino Plant ID</Text>
+          </View>
+          <Text style={styles.plantIdLabel}>Use this ID in your Arduino code:</Text>
+          <TouchableOpacity 
+            style={styles.plantIdBox}
+            onPress={() => {
+              Clipboard.setStringAsync(plantId);
+              Alert.alert('Copied!', 'Plant ID copied to clipboard');
+            }}
+          >
+            <Text style={styles.plantIdText} selectable>{plantId}</Text>
+            <Ionicons name="copy-outline" size={20} color="#10b981" />
+          </TouchableOpacity>
+          <Text style={styles.plantIdHint}>Tap to copy • Paste in Arduino code line 16</Text>
+        </View>
+
         {/* Current Status Card */}
         {latestReading && (
           <View style={styles.card}>
