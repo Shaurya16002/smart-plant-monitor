@@ -357,11 +357,42 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#334155',
   },
+  cardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+    gap: 8,
+  },
   cardTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#fff',
-    marginBottom: 16,
+  },
+  plantIdLabel: {
+    fontSize: 14,
+    color: '#94a3b8',
+    marginBottom: 8,
+  },
+  plantIdBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#0f172a',
+    borderRadius: 8,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: '#10b981',
+    marginBottom: 8,
+  },
+  plantIdText: {
+    flex: 1,
+    fontSize: 13,
+    color: '#10b981',
+    fontFamily: 'monospace',
+  },
+  plantIdHint: {
+    fontSize: 12,
+    color: '#6b7280',
+    textAlign: 'center',
   },
   metricsGrid: {
     flexDirection: 'row',
